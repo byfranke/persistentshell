@@ -34,7 +34,24 @@ sudo ./setup.sh
 **Service Management**: The **persistence.py** script is set up as a systemd service, ensuring it starts on boot and attempts to reconnect every 20 seconds if the connection drops.
 
 # Customization
-To change the IP address and port after initial setup, rerun **encrypt.py** with the new details and the same encryption key.
+**Changing IP Address and Port After Initial Setup**
+
+To modify the IP address and port used by the tool after the initial setup, simply re-run the **encrypt.py** script, providing the new details along with the same encryption key used initially. This ensures that your updated settings remain secure and encrypted.
+
+**Cleanup Options**
+
+Beyond network settings customization, the installation script offers options to perform cleanup after installation or uninstallation is complete:
+
+**Deleting the persistentshell Directory**: At the end of the installation, you will be asked whether you wish to delete the current directory **persistentshell**. This is useful for keeping your environment clean and removing any residual files from the installation process.
+
+**Clearing Terminal Command History**: Along with the option to delete the directory, the script also offers the possibility to clear the terminal's command history. This action will remove all previously stored entries in the command history, providing an additional layer of privacy.
+
+These cleanup options are implemented to ensure that your environment remains secure and traceless after using the tool. It's important to note that choosing to clear the command history will mean you cannot retrieve previously executed commands. Therefore, use this option cautiously and only if you understand the implications.
+
+**Recommendations**
+
+Always review the settings and options available before running the script to ensure you understand the actions that will be performed.
+Remember to keep the encryption key used safe and accessible for future customizations or updates to the settings.
 
 # Disclaimer
 This tool is designed for educational and testing purposes only. The creator strictly discourages and disclaims any responsibility for its use in unauthorized or malicious activities. Always obtain explicit permission before deploying this tool in any environment.
