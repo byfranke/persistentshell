@@ -39,5 +39,3 @@ To change the IP address and port after initial setup, rerun **encrypt.py** with
 # Disclaimer
 This tool is designed for educational and testing purposes only. The creator strictly discourages and disclaims any responsibility for its use in unauthorized or malicious activities. Always obtain explicit permission before deploying this tool in any environment.
 
-# BTC Donations
-bc1qq9hvaydp58dpcz8nh9p49qvh9ffz5pwuqp8fxt
