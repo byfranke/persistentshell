@@ -57,10 +57,9 @@ TARGET_DIR="/usr/local/bin"
 
 # Install the cryptography package
 echo "Installing the cryptography Python package..."
-sudo apt update
 sudo apt install python3-pip
 sudo apt install python3-cryptography
-pip install cryptography
+pip3 install cryptography
 
 # Copy the script to the target directory
 echo "Copying persistence.py to $TARGET_DIR..."
@@ -113,3 +112,26 @@ systemctl enable $TIMER_NAME
 systemctl start $TIMER_NAME
 
 echo "$TIMER_NAME installed and started."
+
+# Prompt to delete the current working directory
+read -p "Do you wish to delete the current directory ($PWD)? [y/n]: " del_choice
+
+case $del_choice in
+    [Yy]* )
+        echo "Deleting the current directory..."
+        # Move up a directory to avoid issues with deleting the current directory
+        cd ..
+        # Delete the directory
+        rm -rf "$PWD/persistentshell"
+        echo "Directory deleted."
+        ;;
+    [Nn]* )
+        echo "Directory not deleted."
+        ;;
+    * )
+        echo "Invalid choice. Directory not deleted."
+        ;;
+esac
+
+echo "Installation complete."
+
