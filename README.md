@@ -1,4 +1,4 @@
-# Persistent Reverse Shell
+# Persistent Reverse Shell for Linux
 This repository contains scripts for setting up a persistent reverse shell connection. The connection utilizes encrypted configuration for enhanced security. It is designed to automatically restart and attempt reconnection at regular intervals, ensuring persistent access.
 
 # Contents
