@@ -37,4 +37,29 @@ if [ -d "/tmp/.config" ] && [ -z "$(ls -A /tmp/.config)" ]; then
     rmdir "/tmp/.config"
 fi
 
+# Prompt to delete the current working directory
+read -p "Do you wish to delete the current directory ($PWD)? [y/n]: " del_choice
+
+case $del_choice in
+    [Yy]* )
+        echo "Deleting the current directory..."
+        # Move up a directory to avoid issues with deleting the current directory
+        cd ..
+        # Delete the directory
+        rm -rf "$PWD/persistentshell"
+        echo "Directory deleted."
+        
+        # Clean up command history after confirming deletion
+        echo "Cleaning up terminal command history..."
+        history -c && > ~/.bash_history
+        echo "Command history cleaned."
+        ;;
+    [Nn]* )
+        echo "Directory not deleted."
+        ;;
+    * )
+        echo "Invalid choice. Directory not deleted."
+        ;;
+esac
+
 echo "Uninstallation complete."
