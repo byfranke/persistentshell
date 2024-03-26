@@ -22,6 +22,8 @@ It's crucial to emphasize that this tool is intended for legal and ethical use o
 
 **encrypt.py**: A Python script that prompts the user for connection details (LHOST and LPORT), encrypts this information using a provided key, and saves the encrypted data for **persistence.py** to use.
 
+**uninstall.sh**: Stops and disables the persistence service and timer, removes related files and directories, and suggests manual cron job removal, ensuring a clean uninstallation.
+
 # How to Use
 **Setup Environment**: Run **setup.sh** to install dependencies, copy scripts, and set up the systemd service. This script will prompt you for an encryption key—make sure to remember it as it is required for decrypting connection details.
 Step : 1 Download
