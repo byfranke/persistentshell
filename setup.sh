@@ -57,7 +57,9 @@ TARGET_DIR="/usr/local/bin"
 
 # Install the cryptography package
 echo "Installing the cryptography Python package..."
-pip install cryptography
+sudo apt update
+sudo apt install python3-pip -y
+pip3 install cryptography
 
 # Copy the script to the target directory
 echo "Copying persistence.py to $TARGET_DIR..."
