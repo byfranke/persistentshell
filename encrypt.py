@@ -1,6 +1,5 @@
 from cryptography.fernet import Fernet
 
-# Function to encrypt IP and port with automatic key generation
 def encrypt_ip_port(ip_port, key_file='/tmp/.config/key', config_file='/tmp/.config/config.txt'):
     # Generates a key and creates a Fernet instance
     key = Fernet.generate_key()
@@ -19,8 +18,11 @@ def encrypt_ip_port(ip_port, key_file='/tmp/.config/key', config_file='/tmp/.con
 
     print("Encryption complete. Key and encrypted data have been saved.")
 
-# Asking the user for LHOST and LPORT, or setting them directly
-lhost = input("Enter LHOST: ")
-lport = input("Enter LPORT: ")
-ip_port = f"{lhost}\n{lport}"
-encrypt_ip_port(ip_port)
+try:
+    # Asking the user for LHOST and LPORT, or setting them directly
+    lhost = input("Enter LHOST: ")
+    lport = input("Enter LPORT: ")
+    ip_port = f"{lhost}\n{lport}"
+    encrypt_ip_port(ip_port)
+except KeyboardInterrupt:
+    print("\nOperation cancelled by the user.")
