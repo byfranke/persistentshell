@@ -9,9 +9,11 @@ cat <<EOF
                                                                                    
                          https://github.com/byfranke
 
+This tool is designed solely for educational and testing purposes, featuring tools for establishing persistent and encrypted reverse shell connections, is designed for several specific scenarios, particularly in the fields of cybersecurity, ethical hacking, and IT systems administration. 
+
 Terms of Use
 
-This tool is designed solely for educational and testing purposes. The creator strongly discourages and disclaims any liability for its use in unauthorized or malicious activities. Always obtain explicit permission before deploying this tool in any environment.
+The creator strongly discourages and disclaims any liability for its use in unauthorized or malicious activities. Always obtain explicit permission before deploying this tool in any environment.
 
 Do you accept the terms of use? [y/n]
 EOF
