@@ -2,7 +2,7 @@
 This repository contains scripts for setting up a persistent reverse shell connection. The connection utilizes encrypted configuration for enhanced security. It is designed to automatically restart and attempt reconnection at regular intervals, ensuring persistent access.
 
 # Contents
-**install.sh**: A Bash script that installs required Python packages, sets up **persistence.py** as a system service for automatic startup, and executes **encrypt.py** to generate encrypted configuration.
+**setup.sh**: A Bash script that installs required Python packages, sets up **persistence.py** as a system service for automatic startup, and executes **encrypt.py** to generate encrypted configuration.
 
 **persistence.py**: A Python script that establishes a reverse shell connection to a specified server, automatically reconnecting every 20 seconds if the connection is lost.
 
@@ -11,10 +11,10 @@ This repository contains scripts for setting up a persistent reverse shell conne
 # How to Use
 **Setup Environment**: Run install.sh to install dependencies, copy scripts, and set up the systemd service. This script will prompt you for an encryption key—make sure to remember it as it is required for decrypting connection details.
 ```
-sudo ./install.sh
+sudo ./setup.sh
 ```
 
-**Configure Connection**: When running **install.sh**, you will be prompted to enter **LHOST** and **LPORT** for your reverse shell connection. This information will be encrypted and saved.
+**Configure Connection**: When running **setup.sh**, you will be prompted to enter **LHOST** and **LPORT** for your reverse shell connection. This information will be encrypted and saved.
 
 **Service Management**: The **persistence.py** script is set up as a systemd service, ensuring it starts on boot and attempts to reconnect every 20 seconds if the connection drops.
 
