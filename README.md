@@ -46,8 +46,6 @@ Beyond network settings customization, the installation script offers options to
 
 **Clearing Terminal Command History**: Along with the option to delete the directory, the script also offers the possibility to clear the terminal's command history. This action will remove all previously stored entries in the command history, providing an additional layer of privacy.
 
-These cleanup options are implemented to ensure that your environment remains secure and traceless after using the tool. It's important to note that choosing to clear the command history will mean you cannot retrieve previously executed commands. Therefore, use this option cautiously and only if you understand the implications.
-
 **Recommendations**
 
 Always review the settings and options available before running the script to ensure you understand the actions that will be performed.
