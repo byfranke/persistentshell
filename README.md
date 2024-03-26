@@ -9,7 +9,7 @@ This repository contains scripts for setting up a persistent reverse shell conne
 **encrypt.py**: A Python script that prompts the user for connection details (LHOST and LPORT), encrypts this information using a provided key, and saves the encrypted data for **persistence.py** to use.
 
 # How to Use
-**Setup Environment**: Run install.sh to install dependencies, copy scripts, and set up the systemd service. This script will prompt you for an encryption key—make sure to remember it as it is required for decrypting connection details.
+**Setup Environment**: Run **setup.sh** to install dependencies, copy scripts, and set up the systemd service. This script will prompt you for an encryption key—make sure to remember it as it is required for decrypting connection details.
 ```
 sudo ./setup.sh
 ```
