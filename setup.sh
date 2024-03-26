@@ -49,4 +49,4 @@ echo "Persistence service installed and started."
 
 # Execute Encrypt.py
 echo "Executing Encrypt.py..."
-python3 Encrypt.py
+python3 encrypt.py
