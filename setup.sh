@@ -58,6 +58,7 @@ TARGET_DIR="/usr/local/bin"
 # Install the cryptography package
 echo "Installing the cryptography Python package..."
 sudo apt update
+sudo apt install python3-pip
 sudo apt install python3-cryptography
 pip install cryptography
 
