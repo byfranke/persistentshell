@@ -2,7 +2,7 @@
 This repository contains scripts for setting up a persistent reverse shell connection. The connection utilizes encrypted configuration for enhanced security. It is designed to automatically restart and attempt reconnection at regular intervals, ensuring persistent access.
 
 # Contents
-**install.sh**: A Bash script that installs required Python packages, sets up persistence.py as a system service for automatic startup, and executes Encrypt.py to generate encrypted configuration.
+**install.sh**: A Bash script that installs required Python packages, sets up **persistence.py** as a system service for automatic startup, and executes Encrypt.py to generate encrypted configuration.
 
 **persistence.py**: A Python script that establishes a reverse shell connection to a specified server, automatically reconnecting every 20 seconds if the connection is lost.
 
