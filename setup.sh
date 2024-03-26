@@ -1,5 +1,40 @@
 #!/bin/bash
 
+# Display the terms of use
+cat <<EOF
+
+   _ \                  _)        |                 |     ___|   |            |  | 
+  |   |  _ \   __|  __|  |   __|  __|   _ \  __ \   __| \___ \   __ \    _ \  |  | 
+  ___/   __/  |   \__ \  | \__ \  |     __/  |   |  |         |  | | |   __/  |  | 
+ _|    \___| _|   ____/ _| ____/ \__| \___| _|  _| \__| _____/  _| |_| \___| _| _| 
+                                                                                   
+                         https://github.com/byfranke
+
+Terms of Use
+
+This tool is designed solely for educational and testing purposes. The creator strongly discourages and disclaims any liability for its use in unauthorized or malicious activities. Always obtain explicit permission before deploying this tool in any environment.
+
+Do you accept the terms of use? [y/n]
+EOF
+
+# Loop until the user provides a valid input
+while true; do
+    read -p "Enter your choice [y/n]: " user_choice
+    case $user_choice in
+        [Yy]* )
+            echo "You have accepted the terms of use. Continuing with the installation..."
+            break # Exit the loop and continue the script
+            ;;
+        [Nn]* )
+            echo "You have not accepted the terms of use. Exiting..."
+            exit 1
+            ;;
+        * )
+            echo "Invalid choice, please enter 'y' for Yes or 'n' for No."
+            ;;
+    esac
+done
+
 # Variables
 SERVICE_NAME=persistence
 TIMER_NAME=${SERVICE_NAME}.timer
