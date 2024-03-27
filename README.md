@@ -44,6 +44,8 @@ Step : 4 Run
 ```
 sudo ./setup.sh
 ```
+https://www.youtube.com/watch?v=rIVaOXZ9xyY
+
 ![image](https://github.com/byfranke/persistentshell/assets/131370932/05df01b5-7d41-41cf-9794-745e4813e00e)
 
 **Configure Connection**: When running **setup.sh**, you will be prompted to enter **LHOST** and **LPORT** for your reverse shell connection. This information will be encrypted and saved.
