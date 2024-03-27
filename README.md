@@ -44,7 +44,6 @@ Step : 4 Run
 ```
 sudo ./setup.sh
 ```
-https://www.youtube.com/watch?v=rIVaOXZ9xyY
 
 ![image](https://github.com/byfranke/persistentshell/assets/131370932/05df01b5-7d41-41cf-9794-745e4813e00e)
 
